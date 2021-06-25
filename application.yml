@@ -1,0 +1,13 @@
+server:
+  port: 8080
+---
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: test1
+          uri: http://naver.com
+          predicates:
+            - Path=/test1/**
+          filters:
+            - RewritePath=/test1(?<segment>/?.*), $\{segment}
